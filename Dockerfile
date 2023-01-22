@@ -16,19 +16,19 @@ RUN chgrp -R 0 /opt && \
     chmod -R g=u /opt && \
     chmod +x -R /opt
 USER 1001
-# ENV ec2_tag_key "POC"
-# ENV ec2_tag_value "GolangOperator"
-# ENV ec2_command "create"
+ENV ec2_tag_key "POC"
+ENV ec2_tag_value "GolangOperator"
+ENV ec2_command "create"
 #can be delete also
 
-ARG tag
-ENV ec2_tag_key $key
+# ARG tag
+# ENV ec2_tag_key $key
 
-ARG tag_val
-ENV ec2_tag_value $val
+# ARG tag_val
+# ENV ec2_tag_value $val
 
-ARG cmd
-ENV ec2_command $cmd
+# ARG cmd
+# ENV ec2_command $cmd
 
 COPY go.* ./
 COPY aws-vmcreate.go .
