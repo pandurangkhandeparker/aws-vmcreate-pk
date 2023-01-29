@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"strings"
 
+	"aws-vm/go/pkg/mod/github.com/aws/aws-sdk-go-v2@v1.17.3/aws"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
@@ -160,13 +162,15 @@ func DeleteInstancesCmd(name *string, value *string) {
 	}
 }
 
-func CreateInstancesCmd(name *string, value *string) {
+func CreateInstancesCmd(name *string, value *string, imageId *string, instanceType *string) {
 	// Create separate values if required.
 	minMaxCount := int32(1)
 
 	input := &ec2.RunInstancesInput{
-		ImageId:      aws.String("ami-0d0ca2066b861631c"),
-		InstanceType: types.InstanceTypeT2Micro,
+		// ImageId:      aws.String("ami-0d0ca2066b861631c"),
+		// InstanceType: types.InstanceTypeT2Micro,
+		ImageId:      imageId,
+		InstanceType: instanceType,
 		MinCount:     &minMaxCount,
 		MaxCount:     &minMaxCount,
 	}
@@ -210,6 +214,8 @@ func main() {
 	command := flag.String("c", "", "command  create or delete")
 	name := flag.String("n", "", "The name of the tag to attach to the instance")
 	value := flag.String("v", "", "The value of the tag to attach to the instance")
+	imageId := flag.String("i", "", "The image id of the instance")
+	instanceType := flag.String("t", "", "The instance type of the new instance")
 	// instanceId := flag.String("i", "", "The IDs of the instance to terminate")
 
 	flag.Parse()
@@ -219,8 +225,8 @@ func main() {
 		return
 	}
 
-	if *name == "" || *value == "" {
-		fmt.Println("You must supply a name and value for the tag (-n NAME -v VALUE)")
+	if *name == "" || *value == "" || *imageId == "" || *instanceType == "" {
+		fmt.Println("You must supply a name and value for the tag (-n NAME -v VALUE -i IMAGEID -t INSTANCETYPE)")
 		return
 	}
 
@@ -232,7 +238,7 @@ func main() {
 	// instances := strings.Split(*instanceId, ",")
 
 	if *command == "create" {
-		CreateInstancesCmd(name, value)
+		CreateInstancesCmd(name, value, imageId, instanceType)
 	}
 
 	if *command == "delete" {
