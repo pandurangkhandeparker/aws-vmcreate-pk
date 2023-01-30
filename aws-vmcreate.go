@@ -6,8 +6,6 @@ import (
 	"fmt"
 	"strings"
 
-	"aws-vm/go/pkg/mod/github.com/aws/aws-sdk-go-v2@v1.17.3/aws"
-
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2"
