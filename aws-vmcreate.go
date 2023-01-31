@@ -168,7 +168,7 @@ func CreateInstancesCmd(name *string, value *string, imageId *string, instanceTy
 		// ImageId:      aws.String("ami-0d0ca2066b861631c"),
 		// InstanceType: types.InstanceTypeT2Micro,
 		ImageId:      imageId,
-		InstanceType: instanceType,
+		InstanceType: "t2.micro",
 		MinCount:     &minMaxCount,
 		MaxCount:     &minMaxCount,
 	}
@@ -219,7 +219,7 @@ func main() {
 	flag.Parse()
 
 	if *command == "" {
-		fmt.Println("You must supply an command  start or stop (-c start")
+		fmt.Println("You must supply an command  start or stop (-c start)")
 		return
 	}
 

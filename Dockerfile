@@ -17,11 +17,17 @@ RUN chgrp -R 0 /opt && \
     chmod +x -R /opt
 USER 1001
 
-ENV ec2_tag_key "POC"
-ENV ec2_tag_value "PandurangGolangOperator"
-ENV ec2_command "create"
-ENV ec2_instance_type "t2.micro"
-ENV ec2_image_id "ami-0d0ca2066b861631c"
+# ENV ec2_tag_key "POC"
+# ENV ec2_tag_value "PandurangGolangOperator"
+# ENV ec2_command "create"
+# ENV ec2_instance_type "t2.micro"
+# ENV ec2_image_id "ami-0d0ca2066b861631c"
+
+ENV ec2_tag_key " "
+ENV ec2_tag_value " "
+ENV ec2_command " "
+ENV ec2_instance_type " "
+ENV ec2_image_id " "
 #can be delete also
 
 # ARG tag
