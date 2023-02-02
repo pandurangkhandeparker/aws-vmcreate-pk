@@ -189,6 +189,10 @@ func CreateInstancesCmd(name *string, value *string, imageId *string, instanceTy
 				Key:   name,
 				Value: value,
 			},
+			{
+				Key:   aws.String("Name"),
+				Value: aws.String("pandurang-ec2"),
+			},
 		},
 	}
 
