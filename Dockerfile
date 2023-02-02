@@ -7,7 +7,7 @@
 # RUN go build -o aws-vmcreate
 
 #deploy
-FROM registry.redhat.io/ubi9/ubi-micro
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
 # Labels
 LABEL name="aws-vmcreate" \
