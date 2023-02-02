@@ -164,11 +164,13 @@ func CreateInstancesCmd(name *string, value *string, imageId *string, instanceTy
 	// Create separate values if required.
 	minMaxCount := int32(1)
 
+	// insType := (types.InstanceType)(*instanceType)
+
 	input := &ec2.RunInstancesInput{
 		// ImageId:      aws.String("ami-0d0ca2066b861631c"),
-		// InstanceType: types.InstanceTypeT2Micro,
+		// InstanceType: types.InstanceTypeT2Micro, OR "t2.micro"
 		ImageId:      imageId,
-		InstanceType: "t2.micro",
+		InstanceType: (types.InstanceType)(*instanceType),
 		MinCount:     &minMaxCount,
 		MaxCount:     &minMaxCount,
 	}
