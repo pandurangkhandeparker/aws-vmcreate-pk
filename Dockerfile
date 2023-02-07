@@ -26,6 +26,7 @@ ENV ec2_tag_value "PandurangGolangOperator"
 ENV ec2_command "create"
 ENV ec2_instance_type "t2.micro"
 ENV ec2_image_id "ami-0d0ca2066b861631c"
+# ENV EC2_INSTANCE "aws.json"
 
 CMD ["bash","-c","./aws-vmcreate -c  $ec2_command -n $ec2_tag_key -v $ec2_tag_value -i $ec2_image_id -t $ec2_instance_type "]
-
+# CMD ["bash","-c","./aws-vmcreate -c  $ec2_command -n $ec2_tag_key -v $ec2_tag_value -i $EC2_INSTANCE "]
